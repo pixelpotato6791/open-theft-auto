@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
-"path": "res://Weapon.gd"
+"path": "res://assets/weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
 "Weapon": ""
@@ -21,7 +21,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Open-theft-auto"
-run/main_scene="res://Dev.tscn"
 config/icon="res://icon.png"
 
 [input]
