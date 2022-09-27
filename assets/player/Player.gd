@@ -47,7 +47,7 @@ func _physics_process(_delta):
 			#print(move_pos)
 	
 	if Input.is_action_pressed("backwards"):
-		move_pos = -global_position.direction_to(mouse_pos) * speed
+		move_pos = -global_position.direction_to(mouse_pos) * WALKSPEED
 		move_pos = move_and_slide(move_pos)
 	
 	if Input.is_action_pressed("shoot"):
