@@ -33,6 +33,7 @@ func _physics_process(_delta):
 	var speed = WALKSPEED
 	
 	if Input.is_action_pressed("run"):
+		# TODO: play run animation
 		speed = RUNSPEED
 	
 	smoothed_mouse_pos = lerp(smoothed_mouse_pos, mouse_pos, 0.3)
@@ -44,7 +45,11 @@ func _physics_process(_delta):
 		if global_position.distance_to(mouse_pos) > 5:
 			move_pos = move_and_slide(move_pos)
 			#print(move_pos)
-			
+	
+	if Input.is_action_pressed("backwards"):
+		move_pos = -global_position.direction_to(mouse_pos) * speed
+		move_pos = move_and_slide(move_pos)
+	
 	if Input.is_action_pressed("shoot"):
 		if current_weapon:
 			current_weapon.shoot()
