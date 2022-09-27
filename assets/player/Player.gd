@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name PLAYER_MAIN
+
 export(int) var WALKSPEED = 80
 export(int) var RUNSPEED = 160
 var smoothed_mouse_pos: Vector2 
@@ -14,8 +16,6 @@ var missions_completed:Array
 
 # inventory
 var current_weapon:Weapon
-var weapon_1:Weapon
-var weapon_2:Weapon
 
 # general stats
 var kills:int
@@ -23,6 +23,7 @@ var missions_completed_count:int
 
 
 func _ready():
+	Game.set('player', self)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED) 
 	current_weapon = $TestWeapon
 	pass
@@ -53,3 +54,15 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("shoot"):
 		if current_weapon:
 			current_weapon.shoot()
+
+func on_weapon_pickup(wpn:Weapon):
+	if self.current_weapon.w_name == wpn.w_name:
+		wpn.get_ammo()
+		return
+		
+	self.current_weapon.drop()
+	self.current_weapon = wpn
+	
+
+func teleport(pos:Vector2):
+	pass

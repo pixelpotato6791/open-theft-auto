@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "PLAYER_MAIN",
+"language": "GDScript",
+"path": "res://assets/player/Player.gd"
+}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://assets/weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
+"PLAYER_MAIN": "",
 "Weapon": ""
 }
 
@@ -23,6 +29,10 @@ _global_script_class_icons={
 config/name="Open-theft-auto"
 run/main_scene="res://Levels/Dev.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://Game.gd"
 
 [debug]
 

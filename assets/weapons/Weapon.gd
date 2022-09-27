@@ -4,6 +4,7 @@ extends Node2D
 class_name Weapon
 
 #export(PackedScene) var Bullet = preload("res://assets/weapons/Bullet.tscn")
+export(String)		var w_name #weapon name
 export(int)   		var damage
 export(int)   		var maxammo
 export(float) 		var distance
@@ -13,6 +14,9 @@ onready var rcast:RayCast2D = $RayCast2D
 
 func _ready():
 	rcast.set_cast_to(Vector2(0, distance))
+
+func drop():
+	pass
 
 func shoot():
 	if rcast.is_colliding():
