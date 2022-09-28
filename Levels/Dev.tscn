@@ -6,12 +6,12 @@
 [ext_resource path="res://assets/Entity.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 20 )
+extents = Vector2( 36, 16 )
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -72 )
+position = Vector2( 1, -67 )
 
 [node name="TestDummy" type="KinematicBody2D" parent="."]
 position = Vector2( -212, -56 )
