@@ -27,7 +27,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Open-theft-auto"
-run/main_scene="res://Levels/Dev.tscn"
+run/main_scene="res://levels/Main.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [autoload]
@@ -40,7 +41,11 @@ settings/fps/force_fps=60
 
 [display]
 
+window/size/width=426
+window/size/height=240
 window/size/resizable=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 
@@ -49,7 +54,7 @@ run={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-foward={
+forward={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
