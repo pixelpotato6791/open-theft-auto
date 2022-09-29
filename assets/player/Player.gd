@@ -4,6 +4,7 @@ class_name PLAYER_MAIN
 
 export(int) var WALKSPEED = 100
 export(int) var RUNSPEED = 160
+export(float) var BACK_MULT = 0.7
 #var smoothed_mouse_pos: Vector2 
 #var move_pos: Vector2
 var velocity = Vector2()
@@ -28,7 +29,7 @@ func get_input():
 	if Input.is_action_pressed("forward"):
 		velocity = Vector2(WALKSPEED, 0).rotated(rotation)
 	if Input.is_action_pressed("backwards"):
-		velocity = Vector2(-WALKSPEED, 0).rotated(rotation)
+		velocity = Vector2(-WALKSPEED * BACK_MULT, 0).rotated(rotation)
 	
 	#print(velocity)
 
