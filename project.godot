@@ -8,22 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "KinematicBody2D",
-"class": "PLAYER_MAIN",
-"language": "GDScript",
-"path": "res://assets/player/Player.gd"
-}, {
-"base": "Node2D",
-"class": "Weapon",
-"language": "GDScript",
-"path": "res://assets/weapons/Weapon.gd"
-} ]
-_global_script_class_icons={
-"PLAYER_MAIN": "",
-"Weapon": ""
-}
-
 [application]
 
 config/name="Open-theft-auto"
