@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/road_tile_v1.png-b249a5c03302949bc8d4f5e57cca2310.stex"
+path="res://.import/player_animated_v1-Sheet.png-92a4e3453a6e6ddc34a08c0635224495.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/road_tile_v1.png"
-dest_files=[ "res://.import/road_tile_v1.png-b249a5c03302949bc8d4f5e57cca2310.stex" ]
+source_file="res://assets/player/player_animated_v1-Sheet.png"
+dest_files=[ "res://.import/player_animated_v1-Sheet.png-92a4e3453a6e6ddc34a08c0635224495.stex" ]
 
 [params]
 
