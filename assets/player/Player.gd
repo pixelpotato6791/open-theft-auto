@@ -37,9 +37,6 @@ func _physics_process(_delta):
 		# TODO: play run animation
 		speed = RUNSPEED
 	
-	smoothed_mouse_pos = lerp(smoothed_mouse_pos, mouse_pos, 0.3)
-	look_at(smoothed_mouse_pos)
-	#look_at(mouse_pos)
 	
 	if Input.is_action_pressed("foward"):
 		move_pos = global_position.direction_to(mouse_pos) * speed
@@ -54,6 +51,10 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("shoot"):
 		if current_weapon:
 			current_weapon.shoot()
+
+	smoothed_mouse_pos = lerp(smoothed_mouse_pos, mouse_pos, 0.3)
+	look_at(smoothed_mouse_pos)
+	#look_at(mouse_pos)
 
 func on_weapon_pickup(wpn:Weapon):
 	if self.current_weapon.w_name == wpn.w_name:
