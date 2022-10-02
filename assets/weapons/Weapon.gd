@@ -21,7 +21,7 @@ func drop():
 func shoot():
 	if rcast.is_colliding():
 		var collider = rcast.get_collider()
-		collider.take_damage(damage)
+		collider.get_node("Health").take_damage(damage)
 
 #func shoot():
 	#var bullet = Bullet.instance()

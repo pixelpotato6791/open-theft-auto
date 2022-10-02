@@ -6,37 +6,44 @@ enum ENTITY_TYPE {
 	ENEMY
 }
 
+enum ENTITY_STATE {
+	CALM,
+	RUN,
+	ENGAGE,
+	DEAD
+}
 
-export(int)  var health
-export(bool) var alive
-export(bool) var attacking
 export(int)  var eyesight
  
-export(PackedScene) var weapon
-export(ENTITY_TYPE) var e_type #entity_type 
+export(PackedScene)  var current_weapon
+export(ENTITY_TYPE)  var e_type #entity_type 
+export(ENTITY_STATE) var current_state
 
 onready var pos = $Position2D 
 
-func _ready():
-	self.pos = $Position2D	
+func _process(_delta):
+	var player_pos = self.get_player_pos()
+	
+	# TODO: use this method?
+	if global_position.distance_to(player_pos) < eyesight:
+		
+		# if obstruction: pass
+			# maybe try shoot a raycast to the player position?
+		
+		print('In eyesight:', global_position.distance_to(player_pos))
+		
+	#if not self.attacking: pass
 
-func _physics_process(_delta):
-	if self.pos.global_position.distance_to(self.get_player_pos()) < eyesight:
-		print(global_position.distance_to(self.get_player_pos()))
-		print('In eyesight')
-		
-	if not self.attacking: pass
+func _on_Attacked_by_player():
+	if self.e_type == ENTITY_TYPE.ENEMY or self.e_type == ENTITY_TYPE.AGGRESSIVE_PED:
+		if self.current_state != ENTITY_STATE.ENGAGE:
+			self.current_state = ENTITY_STATE.ENGAGE
 
-func take_damage(x:int):
-	#if self.e_type == ENTITY_TYPE.AGGRESSIVE_PED and not self.attacking:
-	#	self.attacking = true
+func _on_Health_health_changed(old_value, new_value):
+	if new_value <= 0:
+		self.alive = false
 		
-	if self.health > 0:
-		self.health -= x
-		print("Health:", self.health)
-		return
-		
-	self.alive = false
+	print("Health:", new_value)
 
 func get_player_pos() -> Vector2:
 	return Game.player.global_position
