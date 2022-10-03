@@ -17,7 +17,7 @@ var armor:int
 var missions_completed:Array
 
 # inventory
-var current_weapon:Weapon
+#var current_weapon:Weapon
 
 # general stats
 var kills:int
@@ -34,9 +34,9 @@ func get_input():
 	#print(velocity)
 
 func _ready():
-	Game.set('player', self)
+	Game.set('Player', self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED) 
-	current_weapon = $TestWeapon
+#	current_weapon = $TestWeapon
 	pass
 
 func _physics_process(_delta):
@@ -54,7 +54,7 @@ func _physics_process(_delta):
 	get_input()	
 	velocity = move_and_slide(velocity)
 	
-#	if Input.is_action_pressed("foward"):
+#	if Input.is_action_pressed("forward"):
 #		move_pos = global_position.direction_to(mouse_pos) * speed
 #		if global_position.distance_to(mouse_pos) > 5:
 #			move_pos = move_and_slide(move_pos)
@@ -64,23 +64,23 @@ func _physics_process(_delta):
 #		move_pos = -global_position.direction_to(mouse_pos) * WALKSPEED
 #		move_pos = move_and_slide(move_pos)
 	
-	if Input.is_action_pressed("shoot"):
-		if current_weapon:
-			current_weapon.shoot()
+#	if Input.is_action_pressed("shoot"):
+#		if current_weapon:
+#			current_weapon.shoot()
 
 	# Animations
 	if  velocity != Vector2(0, 0):
-		$AnimationPlayer.play("walk_up")
+		$AnimationPlayer.play("Walk")
 	else:
 		$AnimationPlayer.play("Idle")
 
-func on_weapon_pickup(wpn:Weapon):
-	if self.current_weapon.w_name == wpn.w_name:
-		wpn.get_ammo()
-		return
+#func on_weapon_pickup(wpn:Weapon):
+#	if self.current_weapon.w_name == wpn.w_name:
+#		wpn.get_ammo()
+#		return
 		
-	self.current_weapon.drop()
-	self.current_weapon = wpn
+#	self.current_weapon.drop()
+#	self.current_weapon = wpn
 	
 
 func teleport(pos:Vector2):
