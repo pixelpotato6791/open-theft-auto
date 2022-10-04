@@ -23,13 +23,21 @@ var missions_completed:Array
 var kills:int
 var missions_completed_count:int
 
+
 func get_input():
-	look_at(get_global_mouse_position())
+	if Input.is_action_pressed("shoot"):
+		look_at(get_global_mouse_position())
 	velocity = Vector2()
-	if Input.is_action_pressed("forward"):
-		velocity = Vector2(WALKSPEED, 0).rotated(rotation)
+	if Input.is_action_pressed("right"):
+		velocity.x += 1
+	if Input.is_action_pressed("left"):
+		velocity.x -= 1
 	if Input.is_action_pressed("backwards"):
-		velocity = Vector2(-WALKSPEED * BACK_MULT, 0).rotated(rotation)
+		velocity.y += 1
+	if Input.is_action_pressed("forward"):
+		velocity.y -= 1
+	velocity = velocity.normalized() * WALKSPEED
+	
 	
 	#print(velocity)
 
