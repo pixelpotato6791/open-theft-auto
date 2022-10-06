@@ -27,9 +27,11 @@ func _process(_delta):
 			pass
 		State.ENGAGE:
 			var player_pos = Game.player.global_position
+
+			# need to re-evaluate this
 			get_parent().look_at(player_pos)
 			get_parent().move_and_slide(global_position.direction_to(player_pos) * SPEED)
-
+			####
 
 func _on_Eyesight_body_entered(body):
 	print('entered')
