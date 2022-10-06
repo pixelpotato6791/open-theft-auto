@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/vehicles/car1.png" type="Texture" id=2]
+[ext_resource path="res://assets/vehicles/pickup_truck.png" type="Texture" id=3]
+[ext_resource path="res://assets/Entity.gd" type="Script" id=4]
+[ext_resource path="res://assets/helpers/Health.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 20 )
+
+[node name="Dev" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -72 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 77.5008, 0 )
+scale = Vector2( 13.5781, 1 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Entity" type="KinematicBody2D" parent="."]
+position = Vector2( -212, -56 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+eyesight = 300
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entity"]
+position = Vector2( 4, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Entity"]
+position = Vector2( 4, 0 )
+texture = ExtResource( 3 )
+
+[node name="Health" parent="Entity" instance=ExtResource( 5 )]
+position = Vector2( 212, 56 )
+[connection signal="health_changed" from="Entity/Health" to="Entity" method="_on_Health_health_changed"]
