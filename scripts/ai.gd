@@ -9,20 +9,22 @@ enum State {
 
 
 
-signal state_changed(set_state)
+signal ai_state_changed(new_state)
 
 export(int) var SPEED 
-var current_state:int = State.CALM setget set_state 
+var current_state:int = State.CALM 
 
 func set_state(state:int):
-	print('New state:', state)
 	if current_state == state:
 		return
 	
 	current_state = state
+	emit_signal("ai_state_changed", current_state)
 	
 func _process(_delta):
 	match self.current_state:
+		State.DEAD:
+			pass
 		State.CALM:
 			pass
 		State.ENGAGE:
