@@ -14,6 +14,9 @@ signal ai_state_changed(new_state)
 export(int) var SPEED 
 var current_state:int = State.CALM 
 
+func _ready():
+	emit_signal("ai_state_changed", self.current_state)
+
 func set_state(state:int):
 	if current_state == state:
 		return
