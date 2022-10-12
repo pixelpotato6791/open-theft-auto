@@ -2,18 +2,21 @@ extends KinematicBody2D
 
 class_name PLAYER_MAIN
 
-export(int) var WALKSPEED = 100
+export(int) var WALKSPEED = 120
 export(int) var RUNSPEED = 160
-export(float) var BACK_MULT = 0.7
+export(float) var STRAFE_MULT = 0.7
 #var smoothed_mouse_pos: Vector2 
 #var move_pos: Vector2
-var velocity = Vector2()
+
+var friction = 0.3
+var direction = Vector2()
+var rotation_dir = 0
 
 # player info
 var player_name:String
 var age:int
 var health:int
-var armor:int
+var armor:bool
 var missions_completed:Array
 
 # inventory
@@ -25,21 +28,16 @@ var missions_completed_count:int
 
 
 func get_input():
+	look_at(get_global_mouse_position())
+
+	direction = Vector2(
+		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	)
+	direction = direction.normalized() * WALKSPEED
+	
 	if Input.is_action_pressed("shoot"):
-		look_at(get_global_mouse_position())
-	velocity = Vector2()
-	if Input.is_action_pressed("right"):
-		velocity.x += 1
-	if Input.is_action_pressed("left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("backwards"):
-		velocity.y += 1
-	if Input.is_action_pressed("forward"):
-		velocity.y -= 1
-	velocity = velocity.normalized() * WALKSPEED
-	
-	
-	#print(velocity)
+		direction = Vector2.ZERO
 
 func _ready():
 	Game.set('Player', self)
@@ -60,7 +58,8 @@ func _physics_process(_delta):
 	#look_at(mouse_pos)
 
 	get_input()	
-	velocity = move_and_slide(velocity)
+	#rotation += rotation_dir * _delta
+	direction = move_and_slide(direction.rotated(rotation_dir))
 	
 #	if Input.is_action_pressed("forward"):
 #		move_pos = global_position.direction_to(mouse_pos) * speed
@@ -77,8 +76,10 @@ func _physics_process(_delta):
 #			current_weapon.shoot()
 
 	# Animations
-	if  velocity != Vector2(0, 0):
+	if  direction != Vector2(0, 0):
 		$AnimationPlayer.play("Walk")
+	elif Input.is_action_pressed("shoot"):
+		$AnimationPlayer.play("Pistol")
 	else:
 		$AnimationPlayer.play("Idle")
 
