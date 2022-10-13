@@ -30,11 +30,14 @@ var missions_completed_count:int
 func get_input():
 	look_at(get_global_mouse_position())
 
+	# Writing movements this way is more compact and avoids using if statements 
 	direction = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
+	# Normalize movements to avoid going faster when walking diagonally
 	direction = direction.normalized() * WALKSPEED
+	direction = move_and_slide(direction)
 	
 	if Input.is_action_pressed("shoot"):
 		direction = Vector2.ZERO
@@ -46,9 +49,9 @@ func _ready():
 	pass
 
 func _physics_process(_delta):
-#	var mouse_pos = get_global_mouse_position()
-#	var speed = WALKSPEED
 	
+	get_input()	
+
 #	if Input.is_action_pressed("run"):
 		# TODO: play run animation
 #		speed = RUNSPEED
@@ -57,25 +60,11 @@ func _physics_process(_delta):
 	#look_at(smoothed_mouse_pos)
 	#look_at(mouse_pos)
 
-	get_input()	
-	#rotation += rotation_dir * _delta
-	direction = move_and_slide(direction.rotated(rotation_dir))
-	
-#	if Input.is_action_pressed("forward"):
-#		move_pos = global_position.direction_to(mouse_pos) * speed
-#		if global_position.distance_to(mouse_pos) > 5:
-#			move_pos = move_and_slide(move_pos)
-#			print(move_pos)
-	
-#	if Input.is_action_pressed("backwards"):
-#		move_pos = -global_position.direction_to(mouse_pos) * WALKSPEED
-#		move_pos = move_and_slide(move_pos)
-	
 #	if Input.is_action_pressed("shoot"):
 #		if current_weapon:
 #			current_weapon.shoot()
 
-	# Animations
+	# Animations 
 	if  direction != Vector2(0, 0):
 		$AnimationPlayer.play("Walk")
 	elif Input.is_action_pressed("shoot"):

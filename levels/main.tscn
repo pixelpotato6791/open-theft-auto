@@ -19,6 +19,8 @@ tile_data = PoolIntArray( -589818, 4, 0, -589817, 9, 0, -524282, 4, 0, -524281, 
 [node name="PoliceCruiser" parent="." instance=ExtResource( 3 )]
 position = Vector2( 254, 99 )
 rotation = -2.53265
+z_index = 1
 
 [node name="RedCar" parent="." instance=ExtResource( 4 )]
 position = Vector2( 332, 98 )
+z_index = 1
