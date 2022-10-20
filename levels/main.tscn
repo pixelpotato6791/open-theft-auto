@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/world/world_tileset_v1.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/npc/police_cruiser.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/npc/red_car.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Vehicle.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,10 +18,13 @@ format = 1
 tile_data = PoolIntArray( -589818, 4, 0, -589817, 9, 0, -524282, 4, 0, -524281, 9, 0, -458746, 4, 0, -458745, 9, 0, -393210, 4, 0, -393209, 9, 0, -327674, 4, 0, -327673, 9, 0, -262138, 4, 0, -262137, 9, 0, -196602, 4, 0, -196601, 9, 0, -131066, 4, 0, -131065, 9, 0, -65530, 4, 0, -65529, 9, 0, 6, 4, 0, 7, 9, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 12, 0, 65543, 11, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 3, 0, 65551, 14, 0, 196604, 8, 0, 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 13, 0, 131079, 13, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 10, 0, 131087, 18, 0, 196622, 4, 0, 196623, 9, 0, 262158, 4, 0, 262159, 9, 0, 327694, 4, 0, 327695, 9, 0, 393230, 4, 0, 393231, 9, 0 )
 
 [node name="PoliceCruiser" parent="." instance=ExtResource( 3 )]
-position = Vector2( 254, 99 )
+position = Vector2( 86.3532, 107.193 )
 rotation = -2.53265
 z_index = 1
 
 [node name="RedCar" parent="." instance=ExtResource( 4 )]
 position = Vector2( 332, 98 )
 z_index = 1
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 194.772, 81.7138 )

@@ -5,6 +5,7 @@ class_name PLAYER_MAIN
 export(int) var WALKSPEED = 120
 export(int) var RUNSPEED = 160
 export(float) var STRAFE_MULT = 0.7
+export(bool) var in_vehicle
 #var smoothed_mouse_pos: Vector2 
 #var move_pos: Vector2
 
@@ -26,6 +27,13 @@ var missions_completed:Array
 var kills:int
 var missions_completed_count:int
 
+func _ready():
+	print("Connecting signals...")
+	Game.connect("on_player_in_vehicle", self, "__on_enter_vehicle")
+	Game.connect("on_player_exit_vehicle", self, "__on_exit_vehicle")
+	Game.set('Player', self)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
+#	current_weapon = $TestWeapon
 
 func get_input():
 	look_at(get_global_mouse_position())
@@ -42,13 +50,8 @@ func get_input():
 	if Input.is_action_pressed("shoot"):
 		direction = Vector2.ZERO
 
-func _ready():
-	Game.set('Player', self)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED) 
-#	current_weapon = $TestWeapon
-	pass
-
 func _physics_process(_delta):
+	if in_vehicle: return
 	
 	get_input()	
 
@@ -81,7 +84,23 @@ func _physics_process(_delta):
 #	self.current_weapon = wpn
 	
 
+# primarily used during the alpha/beta phase
 func teleport(pos:Vector2):
-	pass
+	position = pos
 
+func __on_enter_vehicle(vehicle_camera):
+	print("Entered vehicle", vehicle_camera)
+	in_vehicle = true
+	$Sprite.visible = false
+	$PlayerCamera.current = false
+	vehicle_camera.current = true
+	
+func __on_exit_vehicle(pos, vehicle_camera):
+	print("Exited vehicle", pos, vehicle_camera)
+	#in_vehicle = false
+	#self.teleport(pos)
+	#$Sprite.visible = true
+	#$PlayerCamera.current = true
+	#vehicle_camera.current = false
+	
 
