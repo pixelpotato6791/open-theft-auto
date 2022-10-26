@@ -97,10 +97,10 @@ func __on_enter_vehicle(vehicle_camera):
 	
 func __on_exit_vehicle(pos, vehicle_camera):
 	print("Exited vehicle", pos, vehicle_camera)
-	#in_vehicle = false
-	#self.teleport(pos)
-	#$Sprite.visible = true
-	#$PlayerCamera.current = true
-	#vehicle_camera.current = false
+	in_vehicle = false
+	self.teleport(pos)
+	$Sprite.visible = true
+	$PlayerCamera.current = true
+	vehicle_camera.current = false
 	
 

@@ -7,6 +7,7 @@
 [ext_resource path="res://Vehicle.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 8.54999, -98.8002 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 175, 117 )
