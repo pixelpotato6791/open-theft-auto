@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/ui/smg.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/assault_rifle.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/shotgun.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/baseball_bat.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/flip.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/WeaponsUI.gd" type="Script" id=6]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/fist.png-bbbcced9625b31eb05038363741b5404.stex"
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 6 )
+
+[node name="Fists" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.9
+anchor_right = 1.0
+margin_left = 24.0
+margin_right = 40.0
+margin_bottom = 16.0
+texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bird" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.9
+anchor_right = 1.0
+margin_left = 24.0
+margin_right = 40.0
+margin_bottom = 16.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BaseballBat" type="TextureRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -65.283
+margin_top = 0.19371
+margin_right = -0.282959
+margin_bottom = 16.1937
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shotgun" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.851
+anchor_right = 1.0
+margin_left = -1.42313
+margin_top = 0.387424
+margin_right = -0.897125
+margin_bottom = 16.3874
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SMG" type="TextureRect" parent="."]
+anchor_left = 0.956
+anchor_right = 1.0
+margin_left = -14.256
+margin_bottom = 16.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AR" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.807
+anchor_top = 0.008
+anchor_right = 0.807
+anchor_bottom = 0.036
+margin_left = 24.0
+margin_right = 40.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

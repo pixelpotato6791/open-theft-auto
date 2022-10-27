@@ -13,24 +13,17 @@ var friction = 0.3
 var direction = Vector2()
 var rotation_dir = 0
 
-# player info
-var player_name:String
-var age:int
 var health:int
-var armor:bool
-var missions_completed:Array
 
-# inventory
-#var current_weapon:Weapon
-
-# general stats
-var kills:int
-var missions_completed_count:int
 
 func _ready():
 	print("Connecting signals...")
+	
+	
 	Game.connect("on_player_in_vehicle", self, "__on_enter_vehicle")
 	Game.connect("on_player_exit_vehicle", self, "__on_exit_vehicle")
+	WeaponWheel.connect("on_weapon_change", self, "__on_weapon_change")
+
 	Game.set('Player', self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 #	current_weapon = $TestWeapon
@@ -103,4 +96,6 @@ func __on_exit_vehicle(pos, vehicle_camera):
 	$PlayerCamera.current = true
 	vehicle_camera.current = false
 	
-
+func __on_weapon_change(current_weapon):
+	print(current_weapon)
+	pass
